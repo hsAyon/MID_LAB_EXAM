@@ -27,7 +27,6 @@ module.exports = {
 
     getEmpList: function(search, callback){
         if(search && search != ''){
-            console.log('search');
             var sql="SELECT * FROM `employee_details` WHERE `uID` LIKE '"+search+"' OR `name` LIKE '%"+search+"%';";
             db.getResults(sql,function(result){
                 callback(result);
