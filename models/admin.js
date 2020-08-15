@@ -45,4 +45,11 @@ module.exports = {
             callback(result);
         });
     },
+
+    delEmp: function(uID, callback){
+        var sql="DELETE FROM `login` WHERE ID = '"+uID+"'";
+        db.getResults(sql,function(result){
+            callback(result);
+        });
+    },
 }

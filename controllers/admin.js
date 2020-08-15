@@ -122,4 +122,25 @@ router.post('/update/:id',[
     });    
 });
 
+//delete
+router.get('/delete/:id', function(req, res){
+
+    uID = req.params.id;
+
+    admin.getEmp(uID, function(result){
+        
+        res.render('deleteEmp',{employee: result});
+    });    
+});
+
+router.post('/delete/:id', function(req, res){
+
+    uID = req.params.id;
+    if(req.body.confirmation){
+        admin.delEmp(uID, function(){
+            res.redirect('/admin/allemplist');
+        });
+    }
+});
+
 module.exports = router;
