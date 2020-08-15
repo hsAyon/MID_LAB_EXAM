@@ -25,11 +25,20 @@ module.exports = {
         });
     },
 
-    getEmpList: function(callback){
-        var sql="SELECT * FROM `employee_details`";
-        db.getResults(sql,function(result){
-            callback(result);
-        });
+    getEmpList: function(search, callback){
+        if(search && search != ''){
+            console.log('search');
+            var sql="SELECT * FROM `employee_details` WHERE `uID` LIKE '"+search+"' OR `name` LIKE '%"+search+"%';";
+            db.getResults(sql,function(result){
+                callback(result);
+            });
+        } else {
+            console.log('not search');
+            var sql="SELECT * FROM `employee_details`";
+            db.getResults(sql,function(result){
+                callback(result);
+            });
+        }
     },
 
     getEmp: function(uID, callback){

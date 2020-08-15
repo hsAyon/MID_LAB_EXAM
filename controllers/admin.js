@@ -66,7 +66,10 @@ router.post('/addEmp', [
 
 //allemplist
 router.get('/allemplist', function(req, res){
-    admin.getEmpList(function (result){
+    var search = req.query.search;
+    
+    console.log(search);
+    admin.getEmpList(search, function (result){
         res.render('allEmpList',{employees: result});
     }) 
 });

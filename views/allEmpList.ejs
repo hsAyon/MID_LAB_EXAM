@@ -7,7 +7,7 @@
     <h1>Employee List</h1>
 </head>
 <style>
-    th, td {
+    #results th,#results td {
         text-align: center;
         vertical-align: middle;
         border: 1px solid lightgrey;
@@ -17,30 +17,59 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-    
+    $('#searchBtn').click(function(e){
+        if ($('#searchInp').val() != '') {
+            $.get('',{search: $('#searchInp').val()}, function(uphtml){
+                $('#results').html($('#results', uphtml).html());
+            });
+        } else {
+            alert('No search query given!');
+        }
+    });
 });
 </script>
 
 <body>
+
     <table style="">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Gender</th>
-            <th>Designation</th>
-            <th>Action</th>
+            <td>
+                <table width = '100%'>
+                    <tr>
+                        <td width = '100%'>
+                            <input type="text" name="search" id="searchInp" style="width: 100%;">
+                        </td>
+                        <td>
+                            <button type="button" id="searchBtn">Search</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
         </tr>
-        <% employees.forEach(emp => { %>
-            <tr>
-                <td><%= emp.uID %></td>
-                <td><%= emp.name %></td>
-                <td><%= emp.phone %></td>
-                <td><%= emp.gender %></td>
-                <td><%= emp.designation %></td>
-                <td><button onclick="location.href = '/admin/update/<%-emp.uID%>'">Update</button><button onclick="location.href = '/admin/delete/<%-emp.uID%>'">Delete</button></td>
-            </tr>
-        <% }); %>
+        <tr>
+            <td>
+                <table id="results">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Designation</th>
+                        <th>Action</th>
+                    </tr>
+                    <% employees.forEach(emp => { %>
+                        <tr>
+                            <td><%= emp.uID %></td>
+                            <td><%= emp.name %></td>
+                            <td><%= emp.phone %></td>
+                            <td><%= emp.gender %></td>
+                            <td><%= emp.designation %></td>
+                            <td><button onclick="location.href = '/admin/update/<%-emp.uID%>'">Update</button><button onclick="location.href = '/admin/delete/<%-emp.uID%>'">Delete</button></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </td>
+        </tr>
     </table>
 </body>
 </html>
