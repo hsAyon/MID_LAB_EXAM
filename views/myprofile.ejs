@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>Add Employee</h1>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    
+});
+</script>
+
+<body>
+    <div>
+        <form action="" method="post">
+            <table>
+                <% if (employee.picture && employee.picture != '') { %>
+                    <tr>
+                        <td>
+                            <img src="/assets/profile/<%=employee.picture%>" alt="">
+                        </td>
+                    </tr>
+                <% } else { %>
+                    <tr>
+                        <td>
+                            No profile picture
+                        </td>
+                    </tr>
+                <% } %>
+                <tr>
+                    <td>
+                        <label for="name">Name:</label>
+                    </td>
+                    <td>
+                        <%= employee.name %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="username">Username:</label>
+                    </td>
+                    <td>
+                        <%= employee.username %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password:</label>
+                    </td>
+                    <td>
+                        <%= employee.password %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phone">Phone:</label>
+                    </td>
+                    <td>
+                        <%= employee.phone %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gender">Gender:</label>
+                    </td>
+                    <td>
+                        <%= employee.gender %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="designation">Designation:</label>
+                    </td>
+                    <td>
+                        <%= employee.designation %>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

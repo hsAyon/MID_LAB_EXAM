@@ -41,7 +41,7 @@ module.exports = {
     },
 
     getEmp: function(uID, callback){
-        var sql="SELECT * FROM `employee_details` WHERE uID = '"+uID+"'";
+        var sql="SELECT * FROM `employee_details`, `login` WHERE uID = '"+uID+"'";
         db.getResults(sql,function(result){
             callback(result[0]);
         });
