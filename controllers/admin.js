@@ -59,9 +59,16 @@ router.post('/addEmp', [
         res.render('addEmp',{form, valError});
     } else {
         admin.addEmp(req.body.name, req.body.username, req.body.password, req.body.phone, req.body.gender, req.body.designation, function(result){
-            res.redirect('/allemplist');
+            res.redirect('/admin/allemplist');
         });
     }
+});
+
+//allemplist
+router.get('/allemplist', function(req, res){
+    admin.getEmpList(function (result){
+        res.render('allEmpList',{employees: result});
+    }) 
 });
 
 module.exports = router;

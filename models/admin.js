@@ -23,5 +23,12 @@ module.exports = {
                 callback(result1);
             });
         });
-    }
+    },
+
+    getEmpList: function(callback){
+        var sql="SELECT * FROM `employee_details`";
+        db.getResults(sql,function(result){
+            callback(result);
+        });
+    },
 }
