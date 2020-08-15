@@ -42,7 +42,6 @@ router.post('/', [
                 req.session.username = auth[0].username;
                 req.session.usertype = auth[0].type;
                 
-                console.log(req.session);
                 res.redirect('/'+auth[0].type);
             }
             else {
