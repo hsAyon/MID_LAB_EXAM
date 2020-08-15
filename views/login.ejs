@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>Login</h1>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    
+});
+</script>
+
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>
+                    Username: 
+                </td>
+                <td>
+                    <input type="text" name="username" id="username"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password: 
+                </td>
+                <td>
+                    <input type="password" name="password" id="password"> 
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">
+                    <button id="btnL">Login</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <% if (valError.length > 0) { %> 
+    <div class="error" style="color: white; background-color: red; width: fit-content;">
+        <ul>
+            <% valError.forEach(error => { %>
+                <li>
+                    <%=error%>
+                </li>
+            <% }); %>
+        <lil>
+    </div>
+    <% } %> 
+</body>
+</html>
