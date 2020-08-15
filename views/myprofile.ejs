@@ -21,7 +21,7 @@ $(document).ready(function() {
                 <% if (employee.picture && employee.picture != '') { %>
                     <tr>
                         <td>
-                            <img src="/assets/profile/<%=employee.picture%>" alt="">
+                            <img src="<%=employee.picture%>" alt="" style='max-width: 200px; max-height: 200px;'>
                         </td>
                     </tr>
                 <% } else { %>
