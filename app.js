@@ -8,6 +8,7 @@ var app = express();
 
 var login = require('./controllers/login');
 var admin = require('./controllers/admin');
+var employee = require('./controllers/employee');
 
 
 app.set('view engine', 'ejs');
@@ -19,6 +20,7 @@ app.use(exSession({secret: 'secret', saveUninitialized: false, resave: false}));
 
 app.use('/login',login);
 app.use('/admin',admin);
+app.use('/employee',employee);
 
 
 app.use(function (req, res, next) {
