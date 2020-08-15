@@ -71,4 +71,55 @@ router.get('/allemplist', function(req, res){
     }) 
 });
 
+//update
+router.get('/update/:id', function (req, res){
+    
+    uID = req.params.id;
+
+    admin.getEmp(uID, function (result){
+        var form = {
+            name: result.name,
+            phone: result.phone,
+            gender: result.gender,
+            designation: result.designation,
+        };
+        
+        var valError = [];
+
+        res.render('updateEmp',{form, valError, employee: result});
+    });    
+});
+
+router.post('/update/:id',[
+    check('name','Name required!').notEmpty(),
+    check('phone').notEmpty().withMessage('Phone number required!').isNumeric().withMessage('Phone number must be numeric!').isLength({min: 11, max: 11}).withMessage('Phone number must be 11 characters!'),
+    check('gender','Gender required!').notEmpty(),
+], function (req, res){
+    
+    uID = req.params.id;
+
+    admin.getEmp(uID, function (result){
+        var form = {
+            name: req.body.name,
+            phone: req.body.phone,
+            gender: req.body.gender,
+            designation: req.body.designation,
+        };
+        
+        var valError = [];
+    
+        validationResult(req).errors.forEach(error => {
+            valError.push(error.msg);
+        });
+
+        if (valError.length > 0){
+            res.render('updateEmp',{form, valError, employee: result});
+        } else {
+            admin.updEmp(uID, req.body.name, req.body.phone, req.body.gender, req.body.designation, function(result1){
+                res.redirect('/admin/allemplist');
+            });
+        }
+    });    
+});
+
 module.exports = router;
