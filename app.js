@@ -3,12 +3,12 @@ var exSession 	= require('express-session');
 var bodyParser 	= require('body-parser');
 var session = require('express-session');
 var validator = require('express-validator');
-var login = require('./controllers/login');
+const cookieParser = require('cookie-parser');
 var app = express();
 
+var login = require('./controllers/login');
+var admin = require('./controllers/admin');
 
-
-const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
 
@@ -16,7 +16,9 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(exSession({secret: 'secret', saveUninitialized: false, resave: false}));
 
+
 app.use('/login',login);
+app.use('/admin',admin);
 
 
 app.use(function (req, res, next) {
